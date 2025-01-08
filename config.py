@@ -9,7 +9,7 @@ class Config(BaseSettings):
 
     WEBAPP_URL: str = "https://rodjat.github.io/whdocbot"
 
-    WEBHOOK_URL: str = "http://185.41.160.207"
+    WEBHOOK_URL: str = "http://185.41.160.206"
     WEBHOOK_PATH: str = "/webhook"
 
     APP_HOST: str = "localhost"
