@@ -38,10 +38,5 @@ async def webhook(req: Request) -> None:
     await dp.feed_update(bot, update)
 
 
-async def main():
-    await bot.delete_webhook(drop_pending_updates=True)
-    await dp.start_polling(bot)
-
-
 if __name__ == "__main__":
     uvicorn.run(app, host=config.APP_HOST, port=config.APP_PORT)
