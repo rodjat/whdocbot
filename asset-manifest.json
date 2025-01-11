@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/whdocbot/static/css/main.20645037.css",
-    "main.js": "/whdocbot/static/js/main.19d19867.js",
+    "main.css": "/whdocbot/static/css/main.f34df7a8.css",
+    "main.js": "/whdocbot/static/js/main.7cae2633.js",
     "index.html": "/whdocbot/index.html",
-    "main.20645037.css.map": "/whdocbot/static/css/main.20645037.css.map",
-    "main.19d19867.js.map": "/whdocbot/static/js/main.19d19867.js.map"
+    "main.f34df7a8.css.map": "/whdocbot/static/css/main.f34df7a8.css.map",
+    "main.7cae2633.js.map": "/whdocbot/static/js/main.7cae2633.js.map"
   },
   "entrypoints": [
-    "static/css/main.20645037.css",
-    "static/js/main.19d19867.js"
+    "static/css/main.f34df7a8.css",
+    "static/js/main.7cae2633.js"
   ]
 }
