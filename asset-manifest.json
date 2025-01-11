@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/whdocbot/static/css/main.c5afb324.css",
-    "main.js": "/whdocbot/static/js/main.2e5c0e12.js",
+    "main.js": "/whdocbot/static/js/main.ec00d908.js",
     "index.html": "/whdocbot/index.html",
     "main.c5afb324.css.map": "/whdocbot/static/css/main.c5afb324.css.map",
-    "main.2e5c0e12.js.map": "/whdocbot/static/js/main.2e5c0e12.js.map"
+    "main.ec00d908.js.map": "/whdocbot/static/js/main.ec00d908.js.map"
   },
   "entrypoints": [
     "static/css/main.c5afb324.css",
-    "static/js/main.2e5c0e12.js"
+    "static/js/main.ec00d908.js"
   ]
 }
