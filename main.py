@@ -96,7 +96,9 @@ def require_authentication(f):
 @app.post("/api/answer", response_class=JSONResponse)
 @require_authentication
 async def get_answer(data):
-    print(data)
+    with open('answer.txt') as file:
+        file.write(data)
+    return HTTPException(200, data)
 
 
 @dp.message(CommandStart())
