@@ -6,6 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Config(BaseSettings):
     BOT_TOKEN: SecretStr
+    JWT_SECRET_TOKEN: SecretStr
 
     WEBAPP_URL: str = "https://rodjat.github.io/whdocbot"
 
@@ -14,6 +15,7 @@ class Config(BaseSettings):
 
     APP_HOST: str = "localhost"
     APP_PORT: int = 8000
+    DB_PATH: str = "database.db"
 
     model_config = SettingsConfigDict(
         env_file=join(dirname(__file__), ".env"),
