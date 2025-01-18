@@ -28,13 +28,13 @@ bot = Bot(
 dp = Dispatcher()
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"]
+# )
 
 # auth_config = AuthXConfig()
 # auth_config.JWT_SECRET_KEY = config.JWT_SECRET_TOKEN
@@ -45,10 +45,11 @@ app.add_middleware(
 
 markup = (
     InlineKeyboardBuilder()
-    .button(text="Open Me", web_app=WebAppInfo(url=config.WEBHOOK_URL))
+    .button(text="Open Me", web_app=WebAppInfo(url=config.WEBAPP_URL))
 ).as_markup()
 
 def verify_telegram_web_app_data(telegram_init_data):
+    print(telegram_init_data)
     init_data = parse_qs(telegram_init_data)
     hash_value = init_data.get('hash', [None])[0]
     data_to_check = []
@@ -93,6 +94,11 @@ def require_authentication(f):
     wrapper.__name__ = f.__name__
     return wrapper
 
+@dp.message(CommandStart())
+async def start(message: Message):
+    await message.answer("Hello!", reply_markup=markup)
+
+
 @app.post("/api/answer", response_class=JSONResponse)
 @require_authentication
 async def get_answer(data):
@@ -101,16 +107,16 @@ async def get_answer(data):
     return HTTPException(200, data)
 
 
-@dp.message(CommandStart())
-async def start(message: Message):
-    await message.answer("Hello!", reply_markup=markup)
-
-
 @app.post(config.WEBHOOK_PATH)
 async def webhook(req: Request) -> None:
     update = Update.model_validate(await req.json(), context={"bot": bot})
     await dp.feed_update(bot, update)
 
 
+async def main():
+    await dp.start_polling(bot)
+
+
 if __name__ == "__main__":
+    asyncio.run(main())
     uvicorn.run(app, host=config.APP_HOST, port=config.APP_PORT)
