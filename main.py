@@ -10,8 +10,6 @@ from aiogram.filters import CommandStart
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from aiogram.client.default import DefaultBotProperties
 
-from db import db
-
 from authx import AuthX, AuthXConfig
 
 from fastapi import FastAPI, Request, HTTPException
@@ -113,5 +111,4 @@ async def webhook(req: Request) -> None:
 
 
 if __name__ == "__main__":
-    db.init_table()
     uvicorn.run(app, host=config.APP_HOST, port=config.APP_PORT)
