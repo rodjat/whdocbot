@@ -6,7 +6,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Config(BaseSettings):
     BOT_TOKEN: SecretStr
-    JWT_SECRET_TOKEN: SecretStr
+    # JWT_SECRET_TOKEN: SecretStr
 
     WEBAPP_URL: str = "https://rodjat.github.io/whdocbot"
 
