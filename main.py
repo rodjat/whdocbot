@@ -10,7 +10,7 @@ from aiogram.filters import CommandStart
 from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from aiogram.client.default import DefaultBotProperties
 
-from authx import AuthX, AuthXConfig
+# from authx import AuthX, AuthXConfig
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse
@@ -36,12 +36,12 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-auth_config = AuthXConfig()
-auth_config.JWT_SECRET_KEY = config.JWT_SECRET_TOKEN
-auth_config.JWT_ACCESS_COOKIE_NAME = "my_access_token"
-auth_config.JWT_TOKEN_LOCATION = ["cookies"]
-
-security = AuthX(config=auth_config)
+# auth_config = AuthXConfig()
+# auth_config.JWT_SECRET_KEY = config.JWT_SECRET_TOKEN
+# auth_config.JWT_ACCESS_COOKIE_NAME = "my_access_token"
+# auth_config.JWT_TOKEN_LOCATION = ["cookies"]
+#
+# security = AuthX(config=auth_config)
 
 markup = (
     InlineKeyboardBuilder()
