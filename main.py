@@ -10,6 +10,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 import uvicorn
+from starlette.middleware.cors import CORSMiddleware
 
 from config import config
 
@@ -21,6 +22,14 @@ bot = Bot(
 dp = Dispatcher()
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
 markup = (
     InlineKeyboardBuilder()
     .button(text="Open Me", web_app=WebAppInfo(url=config.WEBHOOK_URL))
@@ -30,6 +39,12 @@ markup = (
 @dp.message(CommandStart())
 async def start(message: Message):
     await message.answer("Hello!", reply_markup=markup)
+
+
+@app.post("/api/answer", response_class=JSONResponse)
+async def get_answer(request: Request):
+    data = await request.json()
+    print(data)
 
 
 @app.post(config.WEBHOOK_PATH)
